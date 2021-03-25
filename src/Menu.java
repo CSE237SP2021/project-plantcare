@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -8,7 +9,7 @@ public class Menu {
 	private List<Feature> features;
 	
 	public Menu() {
-		features = Collections.emptyList();
+		features = new ArrayList<Feature>();
 		exit = false;
 	}
 	
