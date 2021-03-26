@@ -1,5 +1,5 @@
-import java.util.List;
-import java.util.Scanner;
+package main;
+import plantInformation.PlantInformation;
 
 public class PlantCare {
 
@@ -15,7 +15,7 @@ public class PlantCare {
 		Menu mainMenu = new Menu();
 		
 		// Add available features
-		
+		mainMenu.addFeature(new PlantInformation());
 		
 		
 		
