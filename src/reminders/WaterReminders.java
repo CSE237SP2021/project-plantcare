@@ -1,15 +1,16 @@
 package reminders;
 
-import java.util.HashMap;
-
 import main.Feature;
 
 import java.util.*;
 
 public class WaterReminders implements Feature {
 //stores, displays, creates and deletes reminders to water your plants
-	public HashMap<String, Reminder> reminders;
-	
+//doesn't work with GUI yet
+	public ArrayList<Reminder> reminders = new ArrayList<Reminder>();
+	/**
+	 * creates a reminder using user input and adds it to the arraylist of reminders
+	 */
 	public void addReminder() {
 		System.out.print("What date will you start watering this plant? (Please use the format YYYY-MM-DD)");
 		Scanner scannerStartDate = new Scanner(System.in);
@@ -20,17 +21,21 @@ public class WaterReminders implements Feature {
 		int wateringInterval = scannerWateringInterval.nextInt();
 		scannerWateringInterval.close();
 		Reminder newReminder = new Reminder(wateringInterval, startDate);
-		//TODO add system to track either the plant or the username or both with the reminder
-		reminders.put(null, newReminder);
+		reminders.add(newReminder);
 	}
 	
 	public void deleteReminder() {
-		//TODO fix after you add the system to track which user/which plant the reminder is attached to
+		//TODO fix after you add the system to track which plant the reminder is attached to
 	}
 	
-	public String displayReminders() {
-		//TODO add way to display all reminders for a specific user
-		return "fix later";
+	public void displayReminders() {
+		for (int i = 0; i < reminders.size(); i++) {
+			System.out.println(reminders.get(i).getNextDate());
+		}
+	}
+	
+	public ArrayList<Reminder> getArrayList() {
+		return reminders;
 	}
 
 	@Override
