@@ -11,6 +11,8 @@ public class PlantInformation implements Feature {
 	}
 	
 	public void run() {
+		// LINK TO Plant information https://www.plantssparkjoy.com/common-house-plants/
+		
 		System.out.println("Showing plant information...");
 		
 		Menu menu = new Menu();
