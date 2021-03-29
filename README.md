@@ -16,4 +16,4 @@ Is there anything that you implemented but doesn't currently work?
 Main GUI interactions.
 
 What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
-javac to compile all classes and java to run. We have implemented a script to run the code in the command line.
+javac to compile all classes and java to run.
