@@ -1,3 +1,4 @@
+package main;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,6 +8,7 @@ public class Menu {
 
 	private boolean exit;
 	private List<Feature> features;
+	static Scanner inputScanner = new Scanner(System.in);
 	
 	public Menu() {
 		features = new ArrayList<Feature>();
@@ -26,8 +28,6 @@ public class Menu {
 	 * Continues to show selections and ask for input until exit is set.
 	 */
 	public void makeSelectionLoop() {
-		Scanner inputScanner = new Scanner(System.in);
-		
 		while(!exit) {
 			System.out.println("0. Exit");
 			for(int i = 0; i < features.size(); i++) {
@@ -47,8 +47,9 @@ public class Menu {
 				exit = true;
 			else if(userInput >= 1 && userInput <= features.size())
 				features.get(userInput-1).run();
+			
 		}
-		inputScanner.close();
+		
 	}
 	
 }
