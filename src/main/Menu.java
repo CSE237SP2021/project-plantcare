@@ -8,7 +8,7 @@ public class Menu {
 
 	private boolean exit;
 	private List<Feature> features;
-	static Scanner inputScanner = new Scanner(System.in);
+	private Scanner inputScanner = new Scanner(System.in);
 	
 	public Menu() {
 		features = new ArrayList<Feature>();
@@ -52,4 +52,7 @@ public class Menu {
 		
 	}
 	
+	public Scanner getScanner() {
+		return this.inputScanner;
+	}
 }

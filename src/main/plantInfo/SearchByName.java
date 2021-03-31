@@ -1,5 +1,4 @@
-package plantInformation;
-
+package main.plantInfo;
 import main.Feature;
 
 public class SearchByName implements Feature {
