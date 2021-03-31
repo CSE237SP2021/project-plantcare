@@ -1,4 +1,4 @@
-package plantInformation;
+package main.plantInfo;
 import main.Feature;
 
 public class ShowAllInfo implements Feature{

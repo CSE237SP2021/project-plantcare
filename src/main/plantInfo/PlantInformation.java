@@ -1,4 +1,4 @@
-package plantInformation;
+package main.plantInfo;
 import main.Feature;
 import main.Menu;
 

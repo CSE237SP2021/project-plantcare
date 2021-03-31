@@ -1,5 +1,4 @@
-package reminders;
-
+package main.reminders;
 import java.time.LocalDate;
 
 public class Reminder {
@@ -33,13 +32,13 @@ public class Reminder {
 	}
 	
 	public String getNextDate() {
-		while (this.nextDate.isBefore(LocalDate.now())) {
+		if (this.nextDate.isBefore(LocalDate.now())) {
 			this.nextDate = this.nextDate.plusDays(wateringInterval);
+			return this.getNextDate();
 		}
+		else {
 			return this.nextDate.toString();
-	}
-	public int getWateringINterval() {
-		return this.wateringInterval;
+		}
 	}
 
 }
