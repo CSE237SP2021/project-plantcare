@@ -1,4 +1,4 @@
-package plantInformation;
+package main.plantInfo;
 import main.Feature;
 import main.Menu;
 
@@ -8,45 +8,30 @@ public class Plant {
 	public String plantName;
 	private String plantSpecies;
 	private int plantAge;
-	private int waterTrack;
 	private int waterPeriod;
-	private String owner;		
+	private	String matureSize;
+	private int careDifficulty;
+	private String soilType;
+	private String bloomTime;
+	private String sunLevel;
 	
-	public Plant(String name, String species, String owner, int age) {
+	
+	public Plant(String name) {
+		
+	}
+	
+	public Plant(String name, String species, String matureSize, int difficulty, String sunLevel, String soilType, String bloomTime) {
 		plantName = name;
-		plantAge = age;
 		plantSpecies = species;
-		waterTrack = 0;
+		this.matureSize = matureSize;
+		careDifficulty = difficulty;
+		this.sunLevel = sunLevel;
+		this.soilType = soilType;
+		this.bloomTime = bloomTime;
 		waterPeriod = findPeriod(species);
-		this.owner = owner;
-	}
-	
-	public Plant(String name, String species, int age, int water) {
-		plantName = name;
-		plantAge = age;
-		plantSpecies = species;
-		waterTrack = water;
-		waterPeriod = findPeriod(species);
-		this.owner = owner;
 	}
 	
 	
-	public String getLabel() {
-		return "Owned Plant";
-	}
-	
-	public void run() {
-		// LINK TO Plant information https://www.plantssparkjoy.com/common-house-plants/
-		
-		System.out.println("Showing plant information...");
-		
-		Menu menu = new Menu();
-		menu.addFeature(new ShowAllInfo());
-		menu.addFeature(new SearchByName());
-		menu.addFeature(new SearchByCareLevel());
-		
-		menu.makeSelectionLoop();
-	}
 	
 	public String getPlantName() {
 		return plantName;
@@ -62,34 +47,15 @@ public class Plant {
 	}
 	
 	
-	public int getWaterTrack() {
-		return waterTrack;
-	}
-	
 	public int getWaterPeriod() {
 		return waterPeriod;
 	}
 	
-	public int getReverseWaterTrack() {
-		return waterPeriod - waterTrack;
-	}
-	
-	public String getOwner() {
-		return owner;
-	}
 	
 	//return desired water period based on the species
 	public int findPeriod(String species) {
+		//TODO Create system for determining desired watering period
 		return 0;
-	}
-	
-	
-	public void setPlantName(String newName) {
-		plantName = newName;
-	}
-	
-	public void setWaterTrack(int newWaterTrack) {
-		plantAge = newWaterTrack;
 	}
 	
 	public boolean equals(Plant otherPlant) {
@@ -99,6 +65,32 @@ public class Plant {
 	
 	//display information of the plant
 	public String toString() {
-		return plantName + ": " + plantAge + "months old " + plantSpecies;
+		return String.format("%s(%s): Difficulty Level %d\nIt grows best in %s lighting with %s soil. \n",
+				plantName, plantSpecies, careDifficulty, sunLevel, soilType);
+	}
+
+	
+	public int getCareDifficulty() {
+		return careDifficulty;
+	}
+
+	
+	public String getMatureSize() {
+		return matureSize;
+	}
+
+
+	public String getSoilType() {
+		return soilType;
+	}
+
+
+	public String getBloomTime() {
+		return bloomTime;
+	}
+
+
+	public String getSunLevel() {
+		return sunLevel;
 	}
 }
