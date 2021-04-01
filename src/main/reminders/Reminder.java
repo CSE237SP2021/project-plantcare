@@ -33,6 +33,7 @@ public class Reminder {
 	public int getWateringInterval() {
 		return this.wateringInterval;
 	}
+	
 	public String getNextDate() {
 		while (this.nextDate.isBefore(LocalDate.now())) {
 			this.nextDate = this.nextDate.plusDays(wateringInterval);
