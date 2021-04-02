@@ -2,6 +2,7 @@ package main.plantInfo;
 import java.util.ArrayList;
 
 import main.Feature;
+import main.Plant;
 
 public class ShowAllInfo implements Feature{
 
