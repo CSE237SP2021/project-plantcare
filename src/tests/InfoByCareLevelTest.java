@@ -1,4 +1,4 @@
-package main.plantInfo;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,6 +7,10 @@ import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import main.plantInfo.InfoByCareLevel;
+import main.plantInfo.Plant;
+import main.plantInfo.PlantInformation;
 
 class InfoByCareLevelTest {
 

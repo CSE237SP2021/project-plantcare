@@ -1,4 +1,4 @@
-package main.plantInfo;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,6 +8,9 @@ import java.nio.file.FileSystems;
 import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
+
+import main.plantInfo.Plant;
+import main.plantInfo.PlantInformation;
 
 class PlantInformationTest {
 
