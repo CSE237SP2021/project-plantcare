@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import main.Feature;
 import main.Menu;
+import main.Plant;
 
 public class PlantInformation implements Feature {
 	static String infoPath = "./src/main/plantInfo/plantInformation.csv";
