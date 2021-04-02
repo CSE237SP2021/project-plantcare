@@ -37,16 +37,18 @@ public class Menu {
 			System.out.println();
 			
 			System.out.println("What would you like to do? (Type menu number)");
-			int userInput = inputScanner.nextInt();
-			while (userInput < 0 || userInput > features.size()) {
+			
+			String userInput = inputScanner.next();
+			while (!isNumeric(userInput) || Integer.parseInt(userInput) < 0 || Integer.parseInt(userInput) > features.size()) {
 				System.out.println("Invalid menu number. Try again (Type menu number)");
-				userInput = inputScanner.nextInt();
+				userInput = inputScanner.next();
 			}
 			
-			if(userInput == 0)
+			int menuChoice = Integer.parseInt(userInput);
+			if(menuChoice == 0)
 				exit = true;
-			else if(userInput >= 1 && userInput <= features.size())
-				features.get(userInput-1).run();
+			else if(menuChoice >= 1 && menuChoice <= features.size())
+				features.get(menuChoice-1).run();
 			
 		}
 		
@@ -54,5 +56,15 @@ public class Menu {
 	
 	public Scanner getScanner() {
 		return this.inputScanner;
+	}
+	
+	private boolean isNumeric(String input) {
+		try {
+			Integer.parseInt(input);
+			return true;
+		}
+		catch (NumberFormatException e) {
+			return false;
+		}
 	}
 }
