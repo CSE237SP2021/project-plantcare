@@ -2,8 +2,10 @@ package main.plantInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import main.Feature;
+import main.Plant;
 
 public class InfoByCareLevel implements Feature {
 
@@ -20,16 +22,20 @@ public class InfoByCareLevel implements Feature {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		for(int level = 0; level<=10; level++) {
-			if(sortedPlants.containsKey(level)) {
-				System.out.println("Care Level: " + level);
-				for(Plant p: sortedPlants.get(level)) {
-					System.out.println(p.getPlantName());
-				}
-				System.out.println();
-			}
+		System.out.println("Desired care level ?/10 (0 to exit): ");
+		Scanner careReader = new Scanner(System.in);
+		int level = careReader.nextInt();
+		while(!sortedPlants.containsKey(level) && level != 0) {
+			System.out.println("Invaild level. Try again.");
+			level = careReader.nextInt();
 		}
+		System.out.println();
+		if (level == 0)
+			return;
+		for(Plant p: sortedPlants.get(level)) {
+			System.out.println(p.toString());
+		}
+		
 	}
 
 	public Map<Integer,ArrayList<Plant>> getSortedPlants() {
