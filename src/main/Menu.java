@@ -9,6 +9,7 @@ public class Menu {
 	private boolean exit;
 	private List<Feature> features;
 	private Scanner inputScanner = new Scanner(System.in);
+	private ArrayList<Plant> myPlants;
 	
 	public Menu() {
 		features = new ArrayList<Feature>();
@@ -56,6 +57,10 @@ public class Menu {
 	
 	public Scanner getScanner() {
 		return this.inputScanner;
+	}
+	
+	public ArrayList<Plant> getMyPlants(){
+		return myPlants;
 	}
 	
 	private boolean isNumeric(String input) {
