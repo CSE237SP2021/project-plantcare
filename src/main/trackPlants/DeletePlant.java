@@ -22,15 +22,34 @@ public class DeletePlant implements Feature{
 	// Complete desired action
 	public void run() {
 		Scanner scanner = menu.getScanner();
-		System.out.println("Tell us the name of the plant you want to stop tracking");
+		System.out.println("Below is the plants you owned:");
+		System.out.println();
+		for (int i = 0; i < menu.getMyPlants().size(); i++) {
+			System.out.println(menu.getMyPlants().get(i).getPlantName());
+		}
+		System.out.println();
+		System.out.println("Type the name of the plant you want to stop tracking (type ALL if you want to stop tracking all of them)");
 		String nameInput = scanner.nextLine();
-		//TODO: check if the name exist
-		if(nameInput == "") {
-			//TODO: loop find index through name;
-			menu.getMyPlants().remove(0);
-		}else {
+		boolean validName = false;
+		//check if the name exist
+		for (int i = 0; i < menu.getMyPlants().size(); i++) {
+			if (nameInput == menu.getMyPlants().get(i).plantName) {
+				menu.getMyPlants().remove(i);
+				validName = true;
+				System.out.println("Successfully delete plant.");
+			}
+		}
+		if(nameInput == "all" || nameInput == "All" || nameInput == "ALL") {
+			for (int i = 0; i < menu.getMyPlants().size(); i++) {
+				menu.getMyPlants().remove(i);
+			}
+			validName = true;
+			System.out.println("Successfully delete plant.");
+		} 
+		if(validName = false){
 			System.out.println("You don't have a plant with this name.");
 		}
+		menu.makeSelectionLoop();
 	}
 
 }

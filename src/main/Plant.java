@@ -29,6 +29,16 @@ public class Plant {
 		waterPeriod = findPeriod(species);
 	}
 	
+	// copy the Characteristics of another plant except name
+	public void makeCopy(Plant otherPlant) {
+		plantSpecies = otherPlant.getPlantSpecies();
+		this.matureSize = otherPlant.getMatureSize();
+		careDifficulty = otherPlant.getCareDifficulty();
+		this.sunLevel = otherPlant.getSunLevel();
+		this.soilType = otherPlant.getSoilType();
+		this.bloomTime = otherPlant.getBloomTime();
+		waterPeriod = findPeriod(plantSpecies);
+	}
 	
 	
 	public String getPlantName() {
@@ -90,5 +100,9 @@ public class Plant {
 
 	public String getSunLevel() {
 		return sunLevel;
+	}
+	
+	public void setName(String newName) {
+		plantName = newName;
 	}
 }
