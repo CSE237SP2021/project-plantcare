@@ -10,6 +10,8 @@ public class Menu {
 	private List<Feature> features;
 	private Scanner inputScanner = new Scanner(System.in);
 	private ArrayList<Plant> myPlants;
+
+	private UserInfo myUsers;
 	
 	public Menu() {
 		features = new ArrayList<Feature>();
@@ -61,6 +63,10 @@ public class Menu {
 	
 	public ArrayList<Plant> getMyPlants(){
 		return myPlants;
+	}
+	
+	public UserInfo getMyUsers(){
+		return myUsers;
 	}
 	
 	private boolean isNumeric(String input) {
