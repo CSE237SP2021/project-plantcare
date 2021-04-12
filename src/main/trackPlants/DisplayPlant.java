@@ -11,7 +11,7 @@ public class DisplayPlant implements Feature{
 		this.menu = menu;
 	}
 	
-	// Get label to appear in menu
+	// Get label to appear in menu 
 	public String getLabel() {
 		return "Display the information of owned plants";
 	}

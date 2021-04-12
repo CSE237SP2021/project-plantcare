@@ -1,6 +1,6 @@
 package main;
 
-//This class define a special plant object. The plantSpecies might change to other type to better interact with other classes and help determined the features of the owned plant.
+//This class define a special plant object. The plantSpecies might change to other type to better interact with other classes and help determined the features of the owned plant. 
 
 public class Plant {
 	public String plantName;

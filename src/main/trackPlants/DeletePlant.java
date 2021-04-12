@@ -14,7 +14,7 @@ public class DeletePlant implements Feature{
 		this.menu = menu;
 	}
 	
-	// Get label to appear in menu
+	// Get label to appear in menu 
 	public String getLabel() {
 		return "Stop tracking an owned plant";
 	}
