@@ -1,4 +1,4 @@
-package main.userInfo;
+package main;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,8 +13,6 @@ public class UserInfo {
 	public HashMap<String, String> careLevel;
 	public HashMap<String, String> lightLevel;
 	public HashMap<String, String> location;
-	
-	
 	
 	public UserInfo() {
 		userName = new ArrayList<String>();
