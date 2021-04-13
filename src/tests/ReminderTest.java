@@ -31,6 +31,6 @@ class ReminderTest {
 	@Test
 	//this one needs to be updated often for it to pass
 	void testGetNextDateWithPastStartDateAndSmallInterval() {
-		assertEquals("2021-04-09", reminderPastSmall.getNextDate());
+		assertEquals("2021-04-15", reminderPastSmall.getNextDate());
 	}
 }

@@ -44,7 +44,7 @@ public class WaterReminders implements Feature{
 	@Override
 	public void run() {
 		Menu menu = new Menu();
-		menu.addFeature();
+		menu.addFeature(new AddReminder(reminders));
 		menu.addFeature();
 		
 		menu.makeSelectionLoop();
