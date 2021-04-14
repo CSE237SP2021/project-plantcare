@@ -112,6 +112,11 @@ public class TrackPlants implements Feature {
 		
 		// remove line
 	}
+	
+	public void displayPlant(int index) {
+		System.out.println(plantList.get(index).toString());
+		
+	}
 
 	private boolean isRepeat(Plant newPlant) {
 		for(Plant p: plantList) {
