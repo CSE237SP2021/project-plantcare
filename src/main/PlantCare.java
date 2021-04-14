@@ -1,6 +1,7 @@
 package main;
 import main.plantInfo.*;
 import main.reminders.*;
+import main.trackPlants.TrackPlants;
 
 public class PlantCare {
 
@@ -18,7 +19,7 @@ public class PlantCare {
 		// Add available features
 		mainMenu.addFeature(new PlantInformation());
 		mainMenu.addFeature(new WaterReminders());
-		
+		mainMenu.addFeature(new TrackPlants());
 		
 		
 		

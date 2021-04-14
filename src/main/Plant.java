@@ -1,11 +1,14 @@
 package main;
 
+import java.time.temporal.*;
+import java.time.LocalDate;
+
 //This class define a special plant object. The plantSpecies might change to other type to better interact with other classes and help determined the features of the owned plant. 
 
 public class Plant {
 	public String plantName;
 	private String plantSpecies;
-	private int plantAge;
+	private LocalDate startDate;
 	private int waterPeriod;
 	private	String matureSize;
 	private int careDifficulty;
@@ -18,6 +21,16 @@ public class Plant {
 		
 	}
 	
+	
+	// Constructor for use in trackPlants
+	public Plant(String name, String species, String startDate, int waterPeriod) {
+		plantName = name;
+		plantSpecies = species;
+		this.startDate = LocalDate.parse(startDate);
+		this.waterPeriod = waterPeriod;
+	}
+	
+	// Constructor for use in plantInfo
 	public Plant(String name, String species, String matureSize, int difficulty, String sunLevel, String soilType, String bloomTime) {
 		plantName = name;
 		plantSpecies = species;
@@ -26,7 +39,7 @@ public class Plant {
 		this.sunLevel = sunLevel;
 		this.soilType = soilType;
 		this.bloomTime = bloomTime;
-		waterPeriod = findPeriod(species);
+		waterPeriod = findPeriod();
 	}
 	
 	// copy the Characteristics of another plant except name
@@ -37,7 +50,6 @@ public class Plant {
 		this.sunLevel = otherPlant.getSunLevel();
 		this.soilType = otherPlant.getSoilType();
 		this.bloomTime = otherPlant.getBloomTime();
-		waterPeriod = findPeriod(plantSpecies);
 	}
 	
 	
@@ -47,7 +59,8 @@ public class Plant {
 	
 	
 	public int getPlantAge() {
-		return plantAge;
+		long longAge = startDate.until(LocalDate.now(), ChronoUnit.DAYS);
+		return (int) longAge;
 	}
 	
 	public String getPlantSpecies() {
@@ -59,11 +72,15 @@ public class Plant {
 		return waterPeriod;
 	}
 	
+	public String getStartDate() {
+		return startDate.toString();
+	}
+	
 	
 	//return desired water period based on the species
-	public int findPeriod(String species) {
+	public int findPeriod() {
 		//TODO Create system for determining desired watering period
-		return 0;
+		return 7;
 	}
 	
 	public boolean equals(Plant otherPlant) {
