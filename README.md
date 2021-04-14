@@ -7,13 +7,14 @@ Do you forget to water your plants? Look at you room filled with dead plants. Th
 
 
 What user stories were completed this iteration?
-Created GUI and made progress with implementing general functionalities. 
+Continued to organize class structures and implement gui functionality. Add more tests. Make project runnable in command line. Create dictionary of plant info. 
 
 What user stories do you intend to complete next iteration?
-Implement full interaction with main GUI. Also, create plant reccomendation functionality.
+Redefine scope of menu object. Clarify tracking procedures for plants and user info.
 
 Is there anything that you implemented but doesn't currently work?
-Main GUI interactions.
+Main GUI interactions. Interaction between packages/classes.
 
 What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
 javac to compile all classes and java to run.
+Command: bash run.sh
