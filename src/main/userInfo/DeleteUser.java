@@ -6,7 +6,6 @@ import java.util.Scanner;
 import main.Feature;
 import main.Menu;
 import main.Plant;
-import main.UserInfo;
 import main.userInfo.*;
 
 

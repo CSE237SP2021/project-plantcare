@@ -51,7 +51,7 @@ public class AddPlant implements Feature {
 						speciesValid = true;
 						System.out.println("Please name your plant");
 						String nameInput = scanner.nextLine();
-						// The word ¡°all¡± used in if condition of delete plant/display plant, prevent user use name like this 
+						// The word all used in if condition of delete plant/display plant, prevent user use name like this 
 						boolean repeatName = true;
 						while(nameInput.toLowerCase().equals("all") || repeatName) {
 							if(nameInput.toLowerCase().equals("all")) {

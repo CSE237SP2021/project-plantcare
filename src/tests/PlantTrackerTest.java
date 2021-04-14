@@ -29,11 +29,12 @@ class PlantTrackerTest {
 	
 	@BeforeEach
 	void setUpTestMenu() {
-
+		
 		Menu testMenu = new Menu();
-		testMenu.addFeature(new AddPlants(testMenu));
-		testMenu.addFeature(new DeletePlant(testMenu));
-		testMenu.addFeature(new DisplayPlant(testMenu));
+		TrackPlants testTracker = new TrackPlants();
+		testMenu.addFeature(new AddPlant(testTracker));
+		testMenu.addFeature(new DeletePlant(testTracker));
+		testMenu.addFeature(new DisplayPlant(testTracker));
 		
 		
 	}

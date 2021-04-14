@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import main.plantInfo.InfoByCareLevel;
-import main.plantInfo.Plant;
+import main.Plant;
 import main.plantInfo.PlantInformation;
 
 class InfoByCareLevelTest {
