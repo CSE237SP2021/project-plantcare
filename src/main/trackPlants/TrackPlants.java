@@ -110,7 +110,7 @@ public class TrackPlants implements Feature {
 	public void deletePlant(int index) {
 		plantList.remove(index);
 		
-		// remove line
+		// TODO remove line from CSV
 	}
 	
 	public void displayPlant(int index) {
