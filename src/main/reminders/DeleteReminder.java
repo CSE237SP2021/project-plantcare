@@ -13,7 +13,7 @@ public class DeleteReminder implements Feature {
 	@Override
 	public String getLabel() {
 		// TODO Auto-generated method stub
-		return null;
+		return "Delete a Reminder";
 	}
 
 	@Override
