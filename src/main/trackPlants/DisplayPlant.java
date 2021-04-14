@@ -6,9 +6,12 @@ import main.Feature;
 import main.Menu;
 
 public class DisplayPlant implements Feature{
-	private Menu menu;
-	public DisplayPlant(Menu menu) {
-		this.menu = menu;
+	
+	// TODO: INTEGRATE WITH TRACK PLANTS 
+	
+	private TrackPlants tracker;
+	public DisplayPlant(TrackPlants trackPlants) {
+		tracker = trackPlants;
 	}
 	
 	// Get label to appear in menu 

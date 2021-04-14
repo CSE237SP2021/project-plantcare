@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-import main.plantInfo.Plant;
+import main.Plant;
 import main.plantInfo.PlantInformation;
 
 class PlantInformationTest {
