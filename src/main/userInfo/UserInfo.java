@@ -4,17 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+//TODO Implement Feature interface and integrate iteraction with other classes as well as GUI.
 
 public class UserInfo {
-
 //	Option to collect and store information about user: desired plant care level, light level, location, etc
 	
 	public ArrayList<String> userName;
 	public HashMap<String, String> careLevel;
 	public HashMap<String, String> lightLevel;
 	public HashMap<String, String> location;
-	
-	
 	
 	public UserInfo() {
 		userName = new ArrayList<String>();
@@ -68,5 +66,4 @@ public class UserInfo {
 		location.remove(name);
 	}
 	
-	// this is the class to 
 }
