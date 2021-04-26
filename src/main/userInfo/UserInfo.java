@@ -4,12 +4,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+import main.Feature;
+import main.Menu;
+import main.Plant;
+import main.plantInfo.InfoByCareLevel;
+import main.plantInfo.ShowAllInfo;
+
 //TODO Implement Feature interface and integrate iteraction with other classes as well as GUI.
 
-public class UserInfo {
+public class UserInfo implements Feature {
 //	Option to collect and store information about user: desired plant care level, light level, location, etc
 	
+	
+	static String infoPath = "./src/main/plantInfo/userinformation.csv";
 	public ArrayList<String> userName;
+	
+	
 	public HashMap<String, String> careLevel;
 	public HashMap<String, String> lightLevel;
 	public HashMap<String, String> location;
@@ -44,6 +54,12 @@ public class UserInfo {
 		return loc;
 	}
 	
+	public String toString(String u) {
+		
+		return
+		
+	}
+	
 	public void AddUser(String name) {
 		userName.add(name);
 	}
@@ -64,6 +80,25 @@ public class UserInfo {
 		careLevel.remove(name);
 		lightLevel.remove(name);
 		location.remove(name);
+	}
+
+	@Override
+	public String getLabel() {
+		// TODO Auto-generated method stub
+		return "User Information";
+	}
+
+	@Override
+	public void run() {
+		System.out.println("(" + getNumPlants() + " known plants)");
+		
+		Menu menu = new Menu();
+		menu.addFeature(new ShowAllInfo(plants));
+		menu.addFeature(new InfoByCareLevel(plants));
+		
+		menu.makeSelectionLoop();
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
