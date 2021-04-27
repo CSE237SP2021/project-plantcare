@@ -1,4 +1,9 @@
 package main.userInfo;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +14,9 @@ import main.Menu;
 import main.Plant;
 import main.plantInfo.InfoByCareLevel;
 import main.plantInfo.ShowAllInfo;
+import main.trackPlants.AddPlant;
+import main.trackPlants.DeletePlant;
+import main.trackPlants.DisplayPlant;
 
 //TODO Implement Feature interface and integrate iteraction with other classes as well as GUI.
 
@@ -30,10 +38,33 @@ public class UserInfo implements Feature {
 		lightLevel = new HashMap<String, String>();
 		location = new HashMap<String, String>();
 		
+	
+		File list = new File(infoPath);
+		try {
+			if(list.createNewFile()) {
+				FileWriter writer = new FileWriter(list);
+				writer.append("Name,Species,Start Date,Watering Period (Days)\n");
+				writer.close();
+			}
+			else 
+				plantList = readPlantList(infoPath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public String getUser(int i) {
 		return userName.get(i);
+	}
+	
+	public ArrayList<String> getAllUsers() {
+		return userName;
+	}
+	
+	public Integer getNumUsers() {
+		return userName.size();
 	}
 	
 	
@@ -54,11 +85,42 @@ public class UserInfo implements Feature {
 		return loc;
 	}
 	
+	/*
 	public String toString(String u) {
 		
 		return
 		
 	}
+	
+	public ArrayList<Plant> readPlantList(String infoPath) {
+		ArrayList<Plant> plantList = new ArrayList<Plant>();
+		try   
+		{  
+			//parsing a CSV file into BufferedReader class constructor  
+			BufferedReader br = new BufferedReader(new FileReader(listPath));  
+			String line = br.readLine(); // skip label row  
+			while ((line = br.readLine()) != null) {  
+				String[] splitInfo = line.split(",");    // use comma as separator  
+				/*Plant newPlant = new Plant(
+						splitInfo[0], 
+						splitInfo[1],
+						splitInfo[2],
+						Integer.parseInt(splitInfo[3])
+						);
+						
+						
+				
+				plantList.add(newPlant);
+			}
+		}   
+		catch (IOException e)   
+		{  
+			e.printStackTrace();  
+		}
+		return plantList;   
+	}
+	
+	*/
 	
 	public void AddUser(String name) {
 		userName.add(name);
@@ -90,11 +152,13 @@ public class UserInfo implements Feature {
 
 	@Override
 	public void run() {
-		System.out.println("(" + getNumPlants() + " known plants)");
+		System.out.println("(" + getNumUsers() + " known plants)");
 		
 		Menu menu = new Menu();
-		menu.addFeature(new ShowAllInfo(plants));
-		menu.addFeature(new InfoByCareLevel(plants));
+		
+		menu.addFeature(new AddUser(this));
+		menu.addFeature(new DeleteUser(this));
+		menu.addFeature(new DisplayUser(this));
 		
 		menu.makeSelectionLoop();
 		// TODO Auto-generated method stub
