@@ -11,6 +11,8 @@ import main.Feature;
 import main.Menu;
 import main.Plant;
 
+
+//The plant tracker stores user's owned plant information in a csv file.
 public class TrackPlants implements Feature {
 
 	private ArrayList<Plant> plantList;
@@ -88,6 +90,8 @@ public class TrackPlants implements Feature {
 	}
 
 	
+	//functions for other classes
+	
 	// Add plant to both arraylist and csv
 	public void addPlant(Plant newPlant) {
 		if(isRepeat(newPlant))
@@ -109,8 +113,7 @@ public class TrackPlants implements Feature {
 	
 	public void deletePlant(int index) {
 		plantList.remove(index);
-		
-		// remove line
+
 	}
 	
 	public void displayPlant(int index) {

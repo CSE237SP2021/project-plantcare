@@ -4,9 +4,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import main.Feature;
+import main.Menu;
 import main.Plant;
 import java.util.Scanner;
+
+import main.plantInfo.InfoByCareLevel;
 import main.plantInfo.PlantInformation;
+import main.plantInfo.ShowAllInfo;
+import main.reminders.WaterReminders;
 
 
 public class AddPlant implements Feature {
@@ -21,7 +26,7 @@ public class AddPlant implements Feature {
 		return "Add an new plant";
 	}
 		
-	// Complete desired action
+	// add a trackable plant 
 	public void run() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Tell us the species of your new plant");
@@ -63,6 +68,16 @@ public class AddPlant implements Feature {
 			System.out.println("Invalid species. Please check plant information for available species.");
 		}
 		
+		//create menu for next action
+		
+		Menu menu = new Menu();
+		menu.addFeature(new AddPlant(tracker));
+		menu.addFeature(new DeletePlant(tracker));
+		menu.addFeature(new DisplayPlant(tracker));
+		menu.addFeature(new PlantInformation());
+		menu.addFeature(new WaterReminders());
+		
+		menu.makeSelectionLoop();
 		
 	}
 

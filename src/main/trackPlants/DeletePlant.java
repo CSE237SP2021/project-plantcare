@@ -6,6 +6,8 @@ import java.util.Scanner;
 import main.Feature;
 import main.Menu;
 import main.Plant;
+import main.plantInfo.PlantInformation;
+import main.reminders.WaterReminders;
 
 
 public class DeletePlant implements Feature{
@@ -19,7 +21,7 @@ public class DeletePlant implements Feature{
 		return "Stop tracking an owned plant";
 	}
 		
-	// Complete desired action
+	// stop tracking an owned plant
 	public void run() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Below is the plants you owned:");
@@ -51,6 +53,15 @@ public class DeletePlant implements Feature{
 				System.out.println("You don't have a plant with this name.");
 			}
 		}
+		
+		//create menu for next action
+		
+		Menu menu = new Menu();
+		menu.addFeature(new AddPlant(tracker));
+		menu.addFeature(new DeletePlant(tracker));
+		menu.addFeature(new DisplayPlant(tracker));
+		menu.addFeature(new PlantInformation());
+		menu.addFeature(new WaterReminders());
 	}
 
 }
