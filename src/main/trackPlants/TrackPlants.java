@@ -6,18 +6,19 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import main.Feature;
 import main.Menu;
 import main.Plant;
 
 
-//The plant tracker stores user's owned plant information in a csv file.
+
 public class TrackPlants implements Feature {
 
 	private ArrayList<Plant> plantList;
 	private String listPath = "./src/main/trackPlants/myPlants.csv"; 
 	
+	
+	//The plant tracker stores user's owned plant information in a csv file.
 	public TrackPlants(){
 		plantList = new ArrayList<Plant>();
 		
@@ -29,7 +30,7 @@ public class TrackPlants implements Feature {
 				writer.close();
 			}
 			else 
-				plantList = readPlantList(listPath);
+				plantList = readPlantList();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,7 +46,7 @@ public class TrackPlants implements Feature {
 	@Override
 	public void run() {
 		Menu trackingMenu = new Menu();
-		plantList = readPlantList(listPath);
+		plantList = readPlantList();
 		// Restructure plant tracking features for easier tracking
 		trackingMenu.addFeature(new DisplayPlant(this));
 		trackingMenu.addFeature(new AddPlant(this));
@@ -55,7 +56,8 @@ public class TrackPlants implements Feature {
 		
 	}
 	
-	public ArrayList<Plant> readPlantList(String listPath) {
+	// Reads csv file at listPath and formats data into Plant objects stored in plantList
+	public ArrayList<Plant> readPlantList() {
 		ArrayList<Plant> plantList = new ArrayList<Plant>();
 		try   
 		{  
@@ -80,6 +82,30 @@ public class TrackPlants implements Feature {
 		return plantList;   
 	}
 
+	// Rewrites values of the csv file at listPath to the corresponding vales in plantList
+	// Reverse action of readPlantList
+	private void updateCSV() {
+		File list = new File(listPath);
+		try {
+			FileWriter writer = new FileWriter(list);
+			writer.append("Name,Species,Start Date,Watering Period (Days)\n");
+			for(Plant plant: plantList) {
+				writer.append(
+						String.format(
+								"%s,%s,%s,%d\n",
+								plant.getPlantName(),
+								plant.getPlantSpecies(),
+								plant.getStartDate(),
+								plant.getWaterPeriod()));
+			}
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
 	public void setPlantList(ArrayList<Plant> list) {
 		plantList = list;
 	}
@@ -93,7 +119,7 @@ public class TrackPlants implements Feature {
 	}
 
 	
-	//functions for other classes
+	// Functions for other classes
 	
 	// Add plant to both arraylist and csv
 	public void addPlant(Plant newPlant) {
@@ -101,25 +127,19 @@ public class TrackPlants implements Feature {
 			return;
 		
 		plantList.add(newPlant);
-		File list = new File(listPath);
-		FileWriter writer;
-		try {
-			writer = new FileWriter(list, true);
-			String newLine = String.format("\n%s,%s,%s,%d", newPlant.getPlantName(), newPlant.getPlantSpecies(), newPlant.getStartDate(), newPlant.getWaterPeriod());
-			writer.append(newLine);
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		updateCSV();
 		
 	}
 	
+	// Removes plant from plantList and values stored in the csv file
 	public void deletePlant(int index) {
 		plantList.remove(index);
-		// TODO remove line from CSV
-
-	}
 	
+		// rewrite csv
+		updateCSV();
+	}
+
+
 	public void displayPlant(int index) {
 		System.out.println(plantList.get(index).toString());
 		
@@ -131,6 +151,10 @@ public class TrackPlants implements Feature {
 				return true;
 		}
 		return false;
+	}
+	
+	public void setListPath(String path) {
+		listPath = path;
 	}
 
 }
