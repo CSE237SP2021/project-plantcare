@@ -12,6 +12,11 @@ import main.Menu;
 import main.Plant;
 
 public class PlantInformation implements Feature {
+	/*
+	 * Acts as tracker for all plant information, read in from plantInformation.csv
+	 * plantInformation.csv acts as database of available plant information: SHOULD NOT BE MODIFIED TO DURING RUNTIME
+	 */
+	
 	static String infoPath = "./src/main/plantInfo/plantInformation.csv";
 	private ArrayList<Plant> plants;
 	
@@ -19,10 +24,27 @@ public class PlantInformation implements Feature {
 		plants = new ArrayList<Plant>();
 		readPlantInformation(infoPath);
 	}
+
+	public String getLabel() {
+		return "Plant Information";
+	}
 	
+	public void run() {
+		// LINK TO Plant information https://www.plantssparkjoy.com/common-house-plants/
+		System.out.println("(" + getNumPlants() + " known plants)");
+		
+		Menu menu = new Menu();
+		menu.addFeature(new ShowAllInfo(plants));
+		menu.addFeature(new InfoByCareLevel(plants));
+		
+		menu.makeSelectionLoop();
+	}
+	
+	// Adds parsed plant to Plant Datastructure
 	public void addPlant(Plant newPlant) {
 		plants.add(newPlant);
 	}
+	
 	//Parse csv file at infoPath and create plant objects for each
 	private void readPlantInformation(String infoPath) {
 		try   
@@ -48,21 +70,6 @@ public class PlantInformation implements Feature {
 		{  
 			e.printStackTrace();  
 		}   
-	}
-
-	public String getLabel() {
-		return "Plant Information";
-	}
-	
-	public void run() {
-		// LINK TO Plant information https://www.plantssparkjoy.com/common-house-plants/
-		System.out.println("(" + getNumPlants() + " known plants)");
-		
-		Menu menu = new Menu();
-		menu.addFeature(new ShowAllInfo(plants));
-		menu.addFeature(new InfoByCareLevel(plants));
-		
-		menu.makeSelectionLoop();
 	}
 	
 	public int getNumPlants() {

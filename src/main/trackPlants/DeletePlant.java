@@ -6,12 +6,14 @@ import java.util.Scanner;
 import main.Feature;
 import main.Menu;
 import main.Plant;
+import main.plantInfo.PlantInformation;
+import main.reminders.WaterReminders;
 
 
 public class DeletePlant implements Feature{
-	private Menu menu;
-	public DeletePlant(Menu menu) {
-		this.menu = menu;
+	private TrackPlants tracker;
+	public DeletePlant(TrackPlants trackPlants) {
+		tracker = trackPlants;
 	}
 	
 	// Get label to appear in menu 
@@ -19,37 +21,51 @@ public class DeletePlant implements Feature{
 		return "Stop tracking an owned plant";
 	}
 		
-	// Complete desired action
+	// stop tracking an owned plant
 	public void run() {
-		Scanner scanner = menu.getScanner();
+		if(tracker.getNumPlants() == 0) {
+			System.out.println("You have no plants to delete.");
+			return;
+		}
+		
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Below is the plants you owned:");
 		System.out.println();
-		for (int i = 0; i < menu.getMyPlants().size(); i++) {
-			System.out.println(menu.getMyPlants().get(i).getPlantName());
+		for (int i = 0; i < tracker.getNumPlants(); i++) {
+			System.out.println(tracker.getPlant(i).getPlantName());
 		}
 		System.out.println();
 		System.out.println("Type the name of the plant you want to stop tracking (type ALL if you want to stop tracking all of them)");
 		String nameInput = scanner.nextLine();
 		boolean validName = false;
-		//check if the name exist
-		for (int i = 0; i < menu.getMyPlants().size(); i++) {
-			if (nameInput == menu.getMyPlants().get(i).plantName) {
-				menu.getMyPlants().remove(i);
+		while(!validName) {
+			if(nameInput.toLowerCase().equals("all")) {
+				for (int i = 0; i < tracker.getNumPlants(); i++) {
+					tracker.deletePlant(i);
+				}
 				validName = true;
-				System.out.println("Successfully delete plant.");
+				System.out.println("Successfully delete all plants.");
+			} 
+			for (int i = 0; i < tracker.getNumPlants(); i++) {
+				if (nameInput.equals(tracker.getPlant(i).getPlantName())) {
+					tracker.deletePlant(i);
+					validName = true;
+					break;
+				}
+			}
+			if(!validName){
+				System.out.println("You don't have a plant with this name.");
 			}
 		}
-		if(nameInput == "all" || nameInput == "All" || nameInput == "ALL") {
-			for (int i = 0; i < menu.getMyPlants().size(); i++) {
-				menu.getMyPlants().remove(i);
-			}
-			validName = true;
-			System.out.println("Successfully delete plant.");
-		} 
-		if(validName = false){
-			System.out.println("You don't have a plant with this name.");
-		}
-		menu.makeSelectionLoop();
+		
+		//create menu for next action
+		
+		Menu menu = new Menu();
+		menu.addFeature(new AddPlant(tracker));
+		menu.addFeature(new DeletePlant(tracker));
+		menu.addFeature(new DisplayPlant(tracker));
+		menu.addFeature(new PlantInformation());
+		menu.addFeature(new WaterReminders());
 	}
 
 }

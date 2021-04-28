@@ -4,12 +4,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+import main.userInfo.UserInfo;
+
 public class Menu {
 
 	private boolean exit;
 	private List<Feature> features;
 	private Scanner inputScanner = new Scanner(System.in);
-	private ArrayList<Plant> myPlants;
 
 	private UserInfo myUsers;
 	
@@ -61,9 +62,6 @@ public class Menu {
 		return this.inputScanner;
 	}
 	
-	public ArrayList<Plant> getMyPlants(){
-		return myPlants;
-	}
 	
 	public UserInfo getMyUsers(){
 		return myUsers;
