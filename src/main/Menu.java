@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+import main.userInfo.UserInfo;
+
 public class Menu {
 
 	private boolean exit;

@@ -4,9 +4,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import main.Feature;
+import main.Menu;
 import main.Plant;
 import java.util.Scanner;
+
+import main.plantInfo.InfoByCareLevel;
 import main.plantInfo.PlantInformation;
+import main.plantInfo.ShowAllInfo;
+import main.reminders.WaterReminders;
 
 
 public class AddPlant implements Feature {
@@ -21,7 +26,7 @@ public class AddPlant implements Feature {
 		return "Add an new plant";
 	}
 		
-	// Complete desired action
+	// add a trackable plant 
 	public void run() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Tell us the species of your new plant (Type ? to show available species):");
@@ -51,7 +56,7 @@ public class AddPlant implements Feature {
 						speciesValid = true;
 						System.out.println("Please name your plant");
 						String nameInput = scanner.nextLine();
-						// The word ¡°all¡± used in if condition of delete plant/display plant, prevent user use name like this 
+						// The word all used in if condition of delete plant/display plant, prevent user use name like this 
 						boolean repeatName = true;
 						while(nameInput.toLowerCase().equals("all") || repeatName) {
 							if(nameInput.toLowerCase().equals("all")) {
@@ -83,7 +88,6 @@ public class AddPlant implements Feature {
 				}
 			}
 		}
-		
 		
 	}
 

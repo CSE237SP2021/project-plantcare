@@ -11,12 +11,16 @@ import main.Feature;
 import main.Menu;
 import main.Plant;
 
+
+//The plant tracker stores user's owned plant information in a csv file.
 public class TrackPlants implements Feature {
 
 	private ArrayList<Plant> plantList;
 	private String listPath = "./src/main/trackPlants/myPlants.csv"; 
 	
 	public TrackPlants(){
+		plantList = new ArrayList<Plant>();
+		
 		File list = new File(listPath);
 		try {
 			if(list.createNewFile()) {
@@ -24,11 +28,12 @@ public class TrackPlants implements Feature {
 				writer.append("Name,Species,Start Date,Watering Period (Days)\n");
 				writer.close();
 			}
+			else 
+				plantList = readPlantList(listPath);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		plantList = new ArrayList<Plant>();
 		
 	}
 	
@@ -88,6 +93,8 @@ public class TrackPlants implements Feature {
 	}
 
 	
+	//functions for other classes
+	
 	// Add plant to both arraylist and csv
 	public void addPlant(Plant newPlant) {
 		if(isRepeat(newPlant))
@@ -109,8 +116,8 @@ public class TrackPlants implements Feature {
 	
 	public void deletePlant(int index) {
 		plantList.remove(index);
-		
 		// TODO remove line from CSV
+
 	}
 	
 	public void displayPlant(int index) {
