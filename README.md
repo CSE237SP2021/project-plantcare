@@ -3,19 +3,17 @@
 An app for learning and caring for a wide variety of houseplants. Keep plants healthy in a fun and engaging way! Compete with friends! Stay on track with your plants
 Do you forget to water your plants? Look at you room filled with dead plants. That will never happen again thanks to our daily reminders.
 
-Use command below to run in command line:
+To run the programnavigate to the project-plantcare folder in your git folder and use the command: 
 bash run.sh
+If you'd rather run the project in Eclipse, run main.PlantCare.java
 
 # Interation Progress Questions
 ### What user stories were completed this iteration?
 
-Continued to organize class structures and implement gui functionality. Add more tests. Make project runnable in command line. Create dictionary of plant info. Integrate owned plant tracking and watering reminders into GUI. 
-
-### What user stories do you intend to complete next iteration?
-
-Redefine scope of menu object. Clarify tracking procedures for plants and user info. Restructure data storage more clearly and memory efficient.
+added the ability for a user to create water reminders, added scores for users, added the ability for a user to add, delete and display owned plants to the menu, 
+fixed some bugs in the add and delete plants classes, fixed the format of the user stories, cleaned up the code for some of the tests, switched to using csv files to
+store most information
 
 ### Is there anything that you implemented but doesn't currently work?
 
-Addition of reminders not fully tracked and available.
-Deletion of owned plants works during runtime but deletions are not saved into database.
+when adding a watering reminder, it will only automatically set the watering period
