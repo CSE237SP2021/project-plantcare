@@ -9,13 +9,14 @@ bash run.sh
 # Interation Progress Questions
 ### What user stories were completed this iteration?
 
-Continued to organize class structures and implement gui functionality. Add more tests. Make project runnable in command line. Create dictionary of plant info. Integrate owned plant tracking and watering reminders into GUI. 
+Continued to organize class structures and implement gui functionality based on the tests. Make project runnable in command line. promote plant tracker. Integrate owned plant tracking and watering reminders into GUI. 
 
-### What user stories do you intend to complete next iteration?
-
-Redefine scope of menu object. Clarify tracking procedures for plants and user info. Restructure data storage more clearly and memory efficient.
 
 ### Is there anything that you implemented but doesn't currently work?
 
 Addition of reminders not fully tracked and available.
 Deletion of owned plants works during runtime but deletions are not saved into database.
+
+### What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
+If you are using eclipse, run the java class main.Plantcare.java
+If you are using linux command line, the script is ./run.sh
