@@ -4,10 +4,11 @@ import java.util.Scanner;
 
 import main.Feature;
 import main.Menu;
+import main.plantInfo.PlantInformation;
+import main.reminders.WaterReminders;
 
 public class DisplayPlant implements Feature{
 	
-	// TODO: INTEGRATE WITH TRACK PLANTS 
 	
 	private TrackPlants tracker;
 	public DisplayPlant(TrackPlants trackPlants) {
@@ -19,7 +20,7 @@ public class DisplayPlant implements Feature{
 		return "Display the information of owned plants";
 	}
 		
-	// Complete desired action
+	// display owned plants
 	public void run() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Below is the plants you owned:");
@@ -55,6 +56,14 @@ public class DisplayPlant implements Feature{
 			}
 		}
 		
+		//create menu for next action
+		
+		Menu menu = new Menu();
+		menu.addFeature(new AddPlant(tracker));
+		menu.addFeature(new DeletePlant(tracker));
+		menu.addFeature(new DisplayPlant(tracker));
+		menu.addFeature(new PlantInformation());
+		menu.addFeature(new WaterReminders());
 		
 	}	
 }
