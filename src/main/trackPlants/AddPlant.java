@@ -63,6 +63,10 @@ public class AddPlant implements Feature {
 								System.out.println("Sorry, this word is a sensitive term for our program. Please try another name.");
 								nameInput = scanner.nextLine();
 							}
+							if(tracker.getNumPlants() == 0) {
+								repeatName = false;
+								break;
+							}
 							for (int j = 0; j < tracker.getNumPlants(); j++) {
 								if (nameInput.equals(tracker.getPlant(j).plantName)) {
 									System.out.println("You already have a plant with this name, please try an new name.");
@@ -76,6 +80,7 @@ public class AddPlant implements Feature {
 						
 						Plant newPlant = new Plant(nameInput, speciesInput, LocalDate.now().toString(), plantDictionary.get(i).findPeriod());
 						tracker.addPlant(newPlant);
+						return;
 					}else {
 						invalidSpeciesCount++;			
 					}

@@ -11,6 +11,10 @@ public class DisplayUser implements Feature{
 		this.menu = menu;
 	}
 	
+	public DisplayUser(UserInfo uinfo) {
+		// TODO implement this constructor as replacement
+	}
+	
 	// Get label to appear in menu
 	public String getLabel() {
 		return "Display the information of a user";

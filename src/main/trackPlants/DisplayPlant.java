@@ -22,6 +22,11 @@ public class DisplayPlant implements Feature{
 		
 	// display owned plants
 	public void run() {
+		if(tracker.getNumPlants() == 0) {
+			System.out.println("You have no plants.");
+			return;
+		}
+		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Below is the plants you owned:");
 		System.out.println();
