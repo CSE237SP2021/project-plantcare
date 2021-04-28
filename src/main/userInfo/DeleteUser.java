@@ -11,7 +11,7 @@ import main.userInfo.*;
 
 public class DeleteUser implements Feature{
 	
-	private UserInfo uinfo;;
+	private UserInfo uinfo;
 	
 	public DeleteUser(UserInfo uinfo) {
 		this.uinfo = uinfo;
@@ -24,14 +24,18 @@ public class DeleteUser implements Feature{
 		
 	// Complete desired action
 	public void run() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Tell us the name of the user you want to stop tracking");
-		String nameInput = scanner.nextLine();
-		//TODO: check if the name exist
+		
 		if(uinfo.getNumUsers()==0) {
 			System.out.println("No user exists");
 			return;
 		}
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Tell us the name of the user you want to stop tracking");
+		String nameInput = scanner.nextLine();
+		//TODO: check if the name exist
+
 		while(!uinfo.getAllUsers().contains(nameInput)) {
 			//TODO: loop find index through name;			
 			System.out.println("This username does not exist in the datatbase! Please try again!");

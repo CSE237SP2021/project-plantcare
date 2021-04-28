@@ -23,6 +23,11 @@ public class DeletePlant implements Feature{
 		
 	// stop tracking an owned plant
 	public void run() {
+		if(tracker.getNumPlants() == 0) {
+			System.out.println("You have no plants to delete.");
+			return;
+		}
+		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Below is the plants you owned:");
 		System.out.println();

@@ -23,35 +23,34 @@ import main.trackPlants.DisplayPlant;
 public class UserInfo implements Feature {
 //	Option to collect and store information about user: desired plant care level, light level, location, etc
 	
-	
 	static String infoPath = "./src/main/plantInfo/userinformation.csv";
 	public ArrayList<String> userName;
-	
-	
-	public HashMap<String, String> careLevel;
-	public HashMap<String, String> lightLevel;
+	public HashMap<String, Integer> careLevel;
+	public HashMap<String, Integer> lightLevel;
 	public HashMap<String, String> location;
 	
 	public UserInfo() {
 		userName = new ArrayList<String>();
-		careLevel = new HashMap<String, String>();
-		lightLevel = new HashMap<String, String>();
+		careLevel = new HashMap<String, Integer>();
+		lightLevel = new HashMap<String, Integer>();
 		location = new HashMap<String, String>();
 		
-	
+		// TODO ESTABLISH STORAGE FORMAT FOR USER INFO
 		File list = new File(infoPath);
+
 		try {
 			if(list.createNewFile()) {
 				FileWriter writer = new FileWriter(list);
-				writer.append("Name,Species,Start Date,Watering Period (Days)\n");
+				writer.append("Username, Carelevel, Lightlevel, Location (Days)\n");
 				writer.close();
 			}
 			else 
-				plantList = readPlantList(infoPath);
+				userName = readPlantList(infoPath);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		
 	}
 	
@@ -65,18 +64,17 @@ public class UserInfo implements Feature {
 	
 	public Integer getNumUsers() {
 		return userName.size();
-	}
+	}	
 	
-	
-	public String getCare(int i) {
+	public Integer getCare(int i) {
 		String user =  getUser(i);
-		String care =  careLevel.get(user);
+		int care =  careLevel.get(user);
 		return care;
 	}
 	
-	public String getLight(int i) {
+	public Integer getLight(int i) {
 		String user =  getUser(i);
-		String light = lightLevel.get(user);
+		int light = lightLevel.get(user);
 		return light;
 	}
 	public String getLoc(int i) {
@@ -85,51 +83,39 @@ public class UserInfo implements Feature {
 		return loc;
 	}
 	
-	/*
-	public String toString(String u) {
-		
-		return
-		
-	}
-	
-	public ArrayList<Plant> readPlantList(String infoPath) {
-		ArrayList<Plant> plantList = new ArrayList<Plant>();
+	public ArrayList<String> readPlantList(String infoPath) {
+		ArrayList<String> userList = new ArrayList<String>();
 		try   
 		{  
 			//parsing a CSV file into BufferedReader class constructor  
-			BufferedReader br = new BufferedReader(new FileReader(listPath));  
+			BufferedReader br = new BufferedReader(new FileReader(infoPath));  
 			String line = br.readLine(); // skip label row  
-			while ((line = br.readLine()) != null) {  
+			while ((line = br.readLine()) != null) {  	
 				String[] splitInfo = line.split(",");    // use comma as separator  
-				/*Plant newPlant = new Plant(
-						splitInfo[0], 
-						splitInfo[1],
-						splitInfo[2],
-						Integer.parseInt(splitInfo[3])
-						);
-						
-						
-				
-				plantList.add(newPlant);
+				userList.add(splitInfo[0]);
+				int care = Integer.parseInt(splitInfo[1]);
+				AddCare(splitInfo[0], care);
+				int light = Integer.parseInt(splitInfo[2]);
+				AddLight(splitInfo[0], light);
+				String loc = splitInfo[3];
+				AddLoc(splitInfo[0], loc);
 			}
 		}   
 		catch (IOException e)   
 		{  
 			e.printStackTrace();  
 		}
-		return plantList;   
-	}
-	
-	*/
+		return userList;   
+	}	
 	
 	public void AddUser(String name) {
 		userName.add(name);
 	}
 	
-	public void AddCare(String name, String care) {
+	public void AddCare(String name, int care) {
 		careLevel.put(name, care);
 	}
-	public void AddLight(String name, String light) {
+	public void AddLight(String name, int light) {
 		lightLevel.put(name, light);
 	}
 	
@@ -152,14 +138,18 @@ public class UserInfo implements Feature {
 
 	@Override
 	public void run() {
-		System.out.println("(" + getNumUsers() + " known plants)");
 		
+		System.out.println("(" + getNumUsers() + " known plants)");		
 		Menu menu = new Menu();
 		
 		menu.addFeature(new AddUser(this));
 		menu.addFeature(new DeleteUser(this));
-		menu.addFeature(new DisplayUser(this));
-		
+
+		menu.addFeature(new DisplayUser(this));		
+
+		//menu.addFeature(new DisplayUser(this));
+		// TODO Fix displayUser for proper constructor
+
 		menu.makeSelectionLoop();
 		// TODO Auto-generated method stub
 		
