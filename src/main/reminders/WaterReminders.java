@@ -63,8 +63,8 @@ public class WaterReminders implements Feature{
 		{
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(listPath));
 			String line = bufferedReader.readLine();
-			String[] splitInfo = line.split(",");
 			while ((line = bufferedReader.readLine()) != null) {
+				String[] splitInfo = line.split(",");
 				Reminder newReminder = new Reminder(
 						splitInfo[0], 
 						Integer.parseInt(splitInfo[3]), 
@@ -85,7 +85,7 @@ public class WaterReminders implements Feature{
 			for(Reminder reminder: reminderList) {
 				writer.append(
 						String.format(
-								"%s, %s, %s, %d\n",
+								"%s,%s,%s,%d\n",
 								reminder.getPlantName(),
 								reminder.getStartDate(),
 								reminder.getNextDate(),
