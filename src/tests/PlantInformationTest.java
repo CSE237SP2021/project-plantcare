@@ -16,10 +16,11 @@ class PlantInformationTest {
 
 	@Test
 	void addPlantTest() {
-		PlantInformation testPI = new PlantInformation();
+		PlantInformation plantTracker = new PlantInformation();
+		int numPlantsBefore = plantTracker.getNumPlants();
 		Plant testPlant = new Plant("test");
-		testPI.addPlant(testPlant);
-		assertEquals(1,testPI.getNumPlants());
+		plantTracker.addPlant(testPlant);
+		assertEquals(numPlantsBefore + 1, plantTracker.getNumPlants());
 	}
 	
 	
@@ -46,7 +47,7 @@ class PlantInformationTest {
 		}
 		
 		PlantInformation testPI = new PlantInformation();
-		assertEquals(plantCount, testPI.getNumPlants());
+		assertEquals(testPI.getNumPlants(), plantCount);
 	}
 
 }

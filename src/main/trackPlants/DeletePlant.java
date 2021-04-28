@@ -49,7 +49,7 @@ public class DeletePlant implements Feature{
 					break;
 				}
 			}
-			if(validName = false){
+			if(!validName){
 				System.out.println("You don't have a plant with this name.");
 			}
 		}

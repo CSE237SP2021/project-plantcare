@@ -38,8 +38,10 @@ public class DisplayPlant implements Feature{
 					tracker.displayPlant(i);
 				}
 				validName = true;
-				System.out.println("Aboved are all plants you own.");
-			} 
+				break;
+			}
+			
+			// maybe make this function in tracker: boolean plantExists(String nameInput)
 			for (int i = 0; i < tracker.getNumPlants(); i++) {
 				if (nameInput.equals(tracker.getPlant(i).getPlantName())) {
 					tracker.displayPlant(i);
@@ -47,8 +49,10 @@ public class DisplayPlant implements Feature{
 					break;
 				}
 			}
-			if(validName = false){
+			if(!validName) {
 				System.out.println("You don't have a plant with this name.");
+				System.out.println("Type the name of the plant you want to view (type ALL if you want to view all of them)");
+				nameInput = scanner.nextLine();
 			}
 		}
 		

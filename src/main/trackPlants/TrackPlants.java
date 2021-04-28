@@ -19,6 +19,8 @@ public class TrackPlants implements Feature {
 	private String listPath = "./src/main/trackPlants/myPlants.csv"; 
 	
 	public TrackPlants(){
+		plantList = new ArrayList<Plant>();
+		
 		File list = new File(listPath);
 		try {
 			if(list.createNewFile()) {
@@ -26,11 +28,12 @@ public class TrackPlants implements Feature {
 				writer.append("Name,Species,Start Date,Watering Period (Days)\n");
 				writer.close();
 			}
+			else 
+				plantList = readPlantList(listPath);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		plantList = new ArrayList<Plant>();
 		
 	}
 	
@@ -113,6 +116,7 @@ public class TrackPlants implements Feature {
 	
 	public void deletePlant(int index) {
 		plantList.remove(index);
+		// TODO remove line from CSV
 
 	}
 	
