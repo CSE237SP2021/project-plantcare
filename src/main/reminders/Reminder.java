@@ -3,11 +3,13 @@ import java.time.LocalDate;
 
 public class Reminder {
 
+	private String plantName;
 	private int wateringInterval;
 	private String startDate;
 	private LocalDate nextDate;
 
-	public Reminder(int wateringInterval, String startDate) {
+	public Reminder(String plantName, int wateringInterval, String startDate) {
+		this.plantName = plantName;
 		this.wateringInterval = wateringInterval;
 		this.startDate = startDate;
 		this.nextDate = LocalDate.parse(startDate).plusDays(wateringInterval);
@@ -39,6 +41,14 @@ public class Reminder {
 			this.nextDate = this.nextDate.plusDays(wateringInterval);
 		}
 		return this.nextDate.toString();
+	}
+	
+	public String getPlantName() {
+		return this.plantName;
+	}
+	
+	public String getStartDate() {
+		return this.startDate;
 	}
 
 }

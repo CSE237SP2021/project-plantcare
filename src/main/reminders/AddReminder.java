@@ -14,8 +14,10 @@ import main.Menu;
 
 
 public class AddReminder implements Feature {
-	private String remindersPath = "./src/main/reminders/Reminders.csv";
-	public AddReminder() {
+
+	private WaterReminders WaterReminders;
+	public AddReminder(WaterReminders WaterReminders) {
+		this.WaterReminders = WaterReminders;
 	}
 
 	@Override
@@ -45,21 +47,8 @@ public class AddReminder implements Feature {
 				}
 				waterPeriod = scanner.nextInt();
 			}
-			
-			/*	TODO
-			 *  Adding new reminder to file and data structure should be implemented as one function of WaterReminders class 
-			 */
-			Reminder newReminder = new Reminder(waterPeriod, LocalDate.now().toString());
-			File reminders = new File(remindersPath);
-			try {
-				FileWriter writer = new FileWriter(reminders);
-				writer = new FileWriter(reminders, true);
-				String newLine = String.format(plantTracker.getPlant(plantNumber).getPlantName(), LocalDate.now().toString(), newReminder.getNextDate(), newReminder.getWateringInterval());
-				writer.append(newLine);
-				writer.close();
-			} catch(IOException e) {
-				e.printStackTrace();
-			}
+			Reminder newReminder = new Reminder(plantTracker.getPlant(plantNumber).getPlantName(), waterPeriod, LocalDate.now().toString());
+			WaterReminders.addReminder(newReminder);
 		}
 		else {
 			System.out.println("I'm sorry, but you don't seem to have any plants registered. In order to create a reminder please return to the main menu and register a plant.");
