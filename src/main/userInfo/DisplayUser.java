@@ -6,6 +6,7 @@ import main.Feature;
 import main.Menu;
 
 public class DisplayUser implements Feature{
+	
 	private UserInfo uinfo;
 	
 	

@@ -11,5 +11,36 @@ import main.userInfo.*;
 
 
 public class score {
+	
+	
+	// time plant proportinal to the time  it was added
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
