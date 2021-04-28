@@ -6,10 +6,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import main.Feature;
 import main.Menu;
 import main.Plant;
-
 
 
 public class TrackPlants implements Feature {
@@ -17,6 +17,7 @@ public class TrackPlants implements Feature {
 	private ArrayList<Plant> plantList;
 	private String listPath = "./src/main/trackPlants/myPlants.csv"; 
 	
+
 	
 	//The plant tracker stores user's owned plant information in a csv file.
 	public TrackPlants(){
@@ -47,6 +48,7 @@ public class TrackPlants implements Feature {
 	public void run() {
 		Menu trackingMenu = new Menu();
 		plantList = readPlantList();
+    
 		// Restructure plant tracking features for easier tracking
 		trackingMenu.addFeature(new DisplayPlant(this));
 		trackingMenu.addFeature(new AddPlant(this));
@@ -56,7 +58,6 @@ public class TrackPlants implements Feature {
 		
 	}
 	
-	// Reads csv file at listPath and formats data into Plant objects stored in plantList
 	public ArrayList<Plant> readPlantList() {
 		ArrayList<Plant> plantList = new ArrayList<Plant>();
 		try   
@@ -118,9 +119,10 @@ public class TrackPlants implements Feature {
 		return plantList.get(index);
 	}
 
-	
+	//
 	// Functions for other classes
-	
+  //
+ 
 	// Add plant to both arraylist and csv
 	public void addPlant(Plant newPlant) {
 		if(isRepeat(newPlant))
@@ -138,6 +140,7 @@ public class TrackPlants implements Feature {
 		// rewrite csv
 		updateCSV();
 	}
+
 
 
 	public void displayPlant(int index) {
