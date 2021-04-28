@@ -45,7 +45,6 @@ public class DeletePlant implements Feature{
 				if (nameInput.equals(tracker.getPlant(i).getPlantName())) {
 					tracker.deletePlant(i);
 					validName = true;
-					System.out.println("Successfully delete plant.");
 					break;
 				}
 			}
