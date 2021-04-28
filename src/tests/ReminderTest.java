@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import main.reminders.Reminder;
 
 class ReminderTest {
-	Reminder reminder = new Reminder(4, "2021-10-01");
-	Reminder reminderPast = new Reminder(20, "2021-02-01");
-	Reminder reminderPastSmall = new Reminder(3, "2021-03-01");
+	Reminder reminder = new Reminder("Jerry", 4, "2021-10-01");
+	Reminder reminderPast = new Reminder("Gary", 20, "2021-02-01");
+	Reminder reminderPastSmall = new Reminder("Larry", 3, "2021-03-01");
 	@Test
 	void testChangeWateringIntervalSmaller() {
 		int newWateringInterval = 3;
@@ -31,6 +31,6 @@ class ReminderTest {
 	@Test
 	//this one needs to be updated often for it to pass
 	void testGetNextDateWithPastStartDateAndSmallInterval() {
-		assertEquals("2021-04-15", reminderPastSmall.getNextDate());
+		assertEquals("2021-04-30", reminderPastSmall.getNextDate());
 	}
 }
