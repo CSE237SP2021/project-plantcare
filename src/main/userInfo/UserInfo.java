@@ -35,8 +35,9 @@ public class UserInfo implements Feature {
 		lightLevel = new HashMap<String, Integer>();
 		location = new HashMap<String, String>();
 		
-	
+		// TODO ESTABLISH STORAGE FORMAT FOR USER INFO
 		File list = new File(infoPath);
+
 		try {
 			if(list.createNewFile()) {
 				FileWriter writer = new FileWriter(list);
@@ -49,6 +50,7 @@ public class UserInfo implements Feature {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		
 	}
 	
@@ -142,7 +144,12 @@ public class UserInfo implements Feature {
 		
 		menu.addFeature(new AddUser(this));
 		menu.addFeature(new DeleteUser(this));
+
 		menu.addFeature(new DisplayUser(this));		
+
+		//menu.addFeature(new DisplayUser(this));
+		// TODO Fix displayUser for proper constructor
+
 		menu.makeSelectionLoop();
 		// TODO Auto-generated method stub
 		
